@@ -2,6 +2,6 @@ package com.john.springbootmall.constant;
 
 public enum ProductCategory {
     FOOD,
-    T_CAR,
+    CAR,
     E_BOOK
 }
