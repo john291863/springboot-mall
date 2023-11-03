@@ -83,4 +83,12 @@ public class ProductDaoImpl implements ProductDao {
 
         namedParameterJdbcTemplate.update(sql, map);
     }
+
+    @Override
+    public void deleteProduct(Integer productId) {
+        String sql = "Delete  from product where product_id = :productId";
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("productId", productId);
+        namedParameterJdbcTemplate.update(sql, map);
+    }
 }
