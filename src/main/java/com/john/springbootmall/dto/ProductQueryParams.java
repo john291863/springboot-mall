@@ -9,4 +9,6 @@ public class ProductQueryParams {
     private ProductCategory productCategory;
     private String orderBy;
     private String sort;
+    private Integer limit;
+    private Integer offset;
 }
