@@ -6,4 +6,5 @@ import com.john.springbootmall.model.User;
 public interface UserDao {
     Integer register(UserRegisterRequest userRegisterRequest);
     User getUserById (Integer userId);
+    User getUserByEmail(String userEmail);
 }
