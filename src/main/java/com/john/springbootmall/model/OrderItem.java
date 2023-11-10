@@ -9,4 +9,8 @@ public class OrderItem {
     private Integer productId;
     private Integer quantity;
     private Integer amount;
+
+
+    private String productName;
+    private String imageUrl;
 }

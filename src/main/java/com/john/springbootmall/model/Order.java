@@ -2,6 +2,7 @@ package com.john.springbootmall.model;
 
 import lombok.Data;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class Order {
@@ -10,4 +11,5 @@ public class Order {
     private Integer totalAmount;
     private Date createdDate;
     private Date lastModifiedDate;
+    private List<OrderItem> orderItemList;
 }
