@@ -28,8 +28,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Integer createProduct(ProductRequest productRequest) {
-        productDao.createProduct(productRequest);
-        return null;
+        return productDao.createProduct(productRequest);
+
     }
 
     @Override

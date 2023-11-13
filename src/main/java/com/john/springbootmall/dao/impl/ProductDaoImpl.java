@@ -73,7 +73,7 @@ public class ProductDaoImpl implements ProductDao {
 
     public Integer createProduct(ProductRequest productRequest){
         String sql =
-                " Insert into product(product_name, category, image_url, price, stock, description," +
+                " INSERT INTO product(product_name, category, image_url, price, stock, description," +
                 " created_date, last_modified_date) " +
                 " VALUES(:productName, :category, :imageUrl, :price, :stock, :description," +
                 " :createdDate, :lastModifiedDate)";

@@ -4,6 +4,7 @@ import com.john.springbootmall.dao.OrderDao;
 import com.john.springbootmall.dao.ProductDao;
 import com.john.springbootmall.dao.UserDao;
 import com.john.springbootmall.dto.CreateOrderRequest;
+import com.john.springbootmall.dto.OrderQueryParams;
 import com.john.springbootmall.model.Order;
 import com.john.springbootmall.model.OrderItem;
 import com.john.springbootmall.model.Product;
@@ -25,11 +26,35 @@ public class OrderServiceImpl implements OrderService {
     private OrderDao orderDao;
     @Autowired
     private ProductDao productDao;
-
     @Autowired
     private UserDao userDao;
 
     private static final Logger log = LoggerFactory.getLogger(OrderServiceImpl.class);
+
+    @Override
+    public Integer getCountOrder(OrderQueryParams orderQueryParams) {
+         return orderDao.getCountOrder(orderQueryParams);
+    }
+
+    @Override
+    public List<Order> getOrders(OrderQueryParams orderQueryParams) {
+        User user = userDao.getUserById(orderQueryParams.getUserId());
+
+
+        if(user == null){
+            log.warn("此用戶 {} 不存在", orderQueryParams.getUserId());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+        List<Order> orderList = orderDao.getOrders(orderQueryParams);
+
+
+        for(Order order: orderList){
+            order.setOrderItemList(orderDao.getOrderItemByOrderId(order.getOrderId()));
+        }
+
+        return orderList;
+    }
 
     @Override
     public Order getOrderById(Integer orderId) {
